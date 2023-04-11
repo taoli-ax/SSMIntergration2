@@ -3,6 +3,8 @@ package com.coh.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
@@ -24,4 +26,18 @@ public class JDBCConfig {
         dataSource.setPassword(password);
         return dataSource;
     }
+
+    /**
+     * 平台事务管理配置
+     * @param dataSource
+     * @return
+     */
+
+    @Bean
+    public PlatformTransactionManager transactionManager(DataSource dataSource){
+        DataSourceTransactionManager dataSourceTransactionManager=new DataSourceTransactionManager();
+        dataSourceTransactionManager.setDataSource(dataSource);
+        return dataSourceTransactionManager;
+    }
+
 }

@@ -1,10 +1,6 @@
 package com.coh.service;
 
 import com.coh.domain.Cup;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -18,7 +14,7 @@ public interface CupService {
 
     public boolean updateCup(Cup cup);
 
-    public boolean deleteCupById(int id);
+    public boolean deleteCup(int id);
 
     public Cup selectCupById(int id);
 

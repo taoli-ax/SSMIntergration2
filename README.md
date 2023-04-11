@@ -15,3 +15,17 @@ again make build SSM environment
 >brand是对应表中的字段？对应Cup中的属性？  
 >`@Insert("insert into cup(name,brand) values(#{name},#{brand})")`  
 > 答案是 name,brand对应表字段，#{name}#{brand}对应的是Cup属性 
+
+
+#### 分支 Controller_service_dao概述
+
+- Service和ServiceImpl实现的是crud的服务
+- Controller是实现了curd的接口
+- Dao是实现了crud的mybatis操作，采用的是注解形式
+
+
+### 分支testing_Controller_and_service
+
+- service测试用junit
+- controller测试用tomcat服务器
+- 如果tomcat不能启动，先看tomcat自身的三个日志有没有错误
