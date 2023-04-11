@@ -11,3 +11,7 @@ again make build SSM environment
 
 不说了，开干
 
+#### Question! 
+>brand是对应表中的字段？对应Cup中的属性？  
+>`@Insert("insert into cup(name,brand) values(#{name},#{brand})")`  
+> 答案是 name,brand对应表字段，#{name}#{brand}对应的是Cup属性 
