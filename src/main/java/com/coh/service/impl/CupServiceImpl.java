@@ -5,9 +5,11 @@ import com.coh.domain.Cup;
 import com.coh.service.CupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Service
+@Transactional
 public class CupServiceImpl implements CupService {
     @Autowired
     private CupDao cupDao;//因为这里使用的是自动装配，所以无法找到Bean，改成warming
@@ -15,31 +17,35 @@ public class CupServiceImpl implements CupService {
     @Override
     public boolean saveCup(Cup cup) {
         cupDao.saveCup(cup);
-        return false;
+        return true;
     }
 
     @Override
     public boolean updateCup(Cup cup) {
-        return false;
+        cupDao.updateCup(cup);
+        return true;
     }
 
     @Override
-    public boolean deleteCupById(int id) {
-        return false;
+    public boolean deleteCup(int id) {
+        cupDao.deleteCup(id);
+        return true;
     }
 
     @Override
     public Cup selectCupById(int id) {
-        return null;
+
+        return cupDao.selectCupById(id);
     }
 
     @Override
     public List<Cup> selectAllCups() {
-        return null;
+        return cupDao.selectAllCups();
     }
 
     @Override
     public int countCup() {
-        return 0;
+
+        return cupDao.countCup();
     }
 }

@@ -3,6 +3,7 @@ package com.coh.controller;
 import com.coh.domain.Cup;
 import com.coh.service.CupService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class CupController {
     };
     @DeleteMapping(value = {"{id}"})
     public boolean deleteCupById(@PathVariable("id") int id){
-        return cupService.deleteCupById(id);
+        return cupService.deleteCup(id);
 
     };
     @GetMapping("/{id}")
@@ -34,8 +35,9 @@ public class CupController {
     public List<Cup> selectAllCups(){
         return cupService.selectAllCups();
     };
-    @GetMapping
+    @GetMapping("count")
     public int countCup(){
+        System.out.println("count");
         return cupService.countCup();
     };
 }
