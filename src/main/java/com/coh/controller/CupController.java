@@ -5,7 +5,7 @@ import com.coh.service.CupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
+import com.coh.controller.Code;
 import java.util.List;
 
 @RestController
@@ -15,29 +15,39 @@ public class CupController {
     @Autowired
     private CupService cupService;
     @PostMapping
-    public boolean saveCup(@RequestBody Cup cup){
-         return cupService.saveCup(cup);
+    public Result saveCup(@RequestBody Cup cup){
+        Boolean result=cupService.saveCup(cup);
+        return new Result(result?Code.SAVE_OK:Code.SAVE_ERR,result);
     };
     @PutMapping
-    public boolean updateCup(@RequestBody Cup cup){
-        return cupService.updateCup(cup);
+    public Result updateCup(@RequestBody Cup cup){
+        Boolean result=cupService.updateCup(cup);
+        return new Result(result?Code.UPDATE_OK:Code.UPDATE_ERR,result);
     };
     @DeleteMapping(value = {"{id}"})
-    public boolean deleteCupById(@PathVariable("id") int id){
-        return cupService.deleteCup(id);
+    public Result deleteCupById(@PathVariable("id") int id){
+        Boolean result=cupService.deleteCup(id);
+        return new Result(result?Code.DELETE_OK:Code.DELETE_ERR,result);
+
 
     };
     @GetMapping("/{id}")
-    public Cup selectCupById(@PathVariable("id") int id){
-        return cupService.selectCupById(id);
+    public Result selectCupById(@PathVariable("id") int id){
+        Cup cup=cupService.selectCupById(id);
+        return new Result(cup!=null?Code.GET_OK:Code.GET_ERR,cup,cup!=null?"":"请重试");
+
     };
     @GetMapping
-    public List<Cup> selectAllCups(){
-        return cupService.selectAllCups();
+    public Result selectAllCups(){
+        List<Cup> cups=cupService.selectAllCups();
+        return new Result(cups!=null?Code.GET_OK:Code.GET_ERR,cups,cups!=null?"":"请重试");
+
     };
     @GetMapping("count")
-    public int countCup(){
+    public Result countCup(){
         System.out.println("count");
-        return cupService.countCup();
+        int result=cupService.countCup();
+        return new Result(Code.GET_OK,result);
+
     };
 }

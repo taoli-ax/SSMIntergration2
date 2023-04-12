@@ -11,6 +11,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
+/**
+ * cupService testing
+ */
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = SpringConfig.class)
 public class AppTest {

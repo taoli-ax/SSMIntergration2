@@ -5,6 +5,10 @@ import org.junit.Test;
 
 import java.net.*;
 import java.io.*;
+
+/**
+ * cupController testing
+ */
 public class MethodTest {
     public static void main(String[] args) {
         try {
