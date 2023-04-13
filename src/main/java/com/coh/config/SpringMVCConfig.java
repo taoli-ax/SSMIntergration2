@@ -11,13 +11,5 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan({"com.coh.controller","com.coh.exception","com.coh.config"})
 @EnableWebMvc
 public class SpringMVCConfig {
-//    @Bean
-//    public ViewResolver configureViewResolver() {
-//        InternalResourceViewResolver viewResolve = new InternalResourceViewResolver();
-//        viewResolve.setPrefix("/");
-//        viewResolve.setSuffix(".html");
-//
-//        return viewResolve;
-//    }
 
 }

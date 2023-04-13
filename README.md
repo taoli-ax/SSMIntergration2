@@ -38,3 +38,26 @@ again make build SSM environment
 - 业务中抛出异常 `throw new SystemException()`
 - 异常处理类 `@ExceptionHandler(SystemException) doSystemException(SystemException ex)`
 - 注解 `@RestControllerAdvice`,`@ExceptionHandler(SystemException) `
+
+
+### 6-StaticResourceVisit_and_Interceptor
+拦截器概念理解
+`位于Filter之后，返回页面之前，用于对springmvc的Controller的增强` 
+
+
+
+### maven的模块化开发
+概念：`对于我来说，maven的模块是可以install成为另一个Maven的jar包，把要被集成的maven项目打包执行maven install`,wow!,然后，就像这样，把一个`pom.xml`的坐标加入到另一个`pom.xml`里面
+```pom
+    <dependencies>
+        <dependency>
+            <groupId>com.coh</groupId>
+            <artifactId>SSMIntergration2</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <packaging>war</packaging>
+        </dependency>
+    </dependencies>
+
+```
+
+**待续。。。**
