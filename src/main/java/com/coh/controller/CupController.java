@@ -1,6 +1,7 @@
 package com.coh.controller;
 
 import com.coh.domain.Cup;
+import com.coh.exception.SystemException;
 import com.coh.service.CupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +34,9 @@ public class CupController {
     };
     @GetMapping("/{id}")
     public Result selectCupById(@PathVariable("id") int id){
+        if(id==1){
+            throw new SystemException(Code.SYSTEM_ERR,"SYSTEM_ERR THROWING");
+        }
         Cup cup=cupService.selectCupById(id);
         return new Result(cup!=null?Code.GET_OK:Code.GET_ERR,cup,cup!=null?"":"请重试");
 
