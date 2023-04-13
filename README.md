@@ -29,3 +29,12 @@ again make build SSM environment
 - service测试用junit
 - controller测试用tomcat服务器
 - 如果tomcat不能启动，先看tomcat自身的三个日志有没有错误
+
+
+
+### exception分支
+
+- 定义异常类 `SystemException`
+- 业务中抛出异常 `throw new SystemException()`
+- 异常处理类 `@ExceptionHandler(SystemException) doSystemException(SystemException ex)`
+- 注解 `@RestControllerAdvice`,`@ExceptionHandler(SystemException) `
